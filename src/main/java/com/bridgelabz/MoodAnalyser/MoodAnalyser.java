@@ -1,5 +1,6 @@
 package com.bridgelabz.MoodAnalyser;
 
+
 /**
  * Hello world!
  *
@@ -17,13 +18,22 @@ public class MoodAnalyser
 		super();
 	}
 
-	public String analyseMood()
+	public String analyseMood() throws MoodAnalyserException
 	{
+		try
+		{
 		if (message.contains("sad"))
 		{
 			return "SAD";
 		}
 		return "HAPPY";
+		}
+		catch(NullPointerException e)
+		{
+			//throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.ENTERED_NULL,"Enter Proper Message");
+			return "HAPPY";
+			
+		}
 	}
 
 }
