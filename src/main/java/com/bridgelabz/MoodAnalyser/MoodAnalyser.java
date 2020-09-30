@@ -22,17 +22,19 @@ public class MoodAnalyser
 	{
 		try
 		{
-		if (message.contains("sad"))
-		{
-			return "SAD";
-		}
-		return "HAPPY";
+			if(message.length()==0)
+			{
+				throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.ENTERED_EMPTY,"empty");
+			}
+			if (message.contains("sad"))
+			{
+				return "SAD";
+			}
+			return "HAPPY";
 		}
 		catch(NullPointerException e)
 		{
-			//throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.ENTERED_NULL,"Enter Proper Message");
-			return "HAPPY";
-			
+			throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.ENTERED_NULL,"Enter Proper Message");
 		}
 	}
 
